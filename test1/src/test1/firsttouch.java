@@ -39,7 +39,7 @@ String quchu0and1(String str)
 	int indexof0mulbackadd = str.indexOf("+", indexof0mul+1);
 	int indexof0mulforwardadd = str.substring(0,indexof0mul).lastIndexOf("+");////////////here////////////////
 	str = replaceoldstrto0(indexof0mulbackadd,indexof0mulforwardadd,str);
-	
+
 	}
 	}while(indexof0mul >= 0);
 
@@ -54,9 +54,11 @@ String quchu0and1(String str)
 	int indexof0mulbackadd = str.indexOf("+", indexofmul0+1);
 	int indexof0mulforwardadd = str.substring(0,indexofmul0).lastIndexOf("+");////////////here////////////////
 	str = replaceoldstrto0(indexof0mulbackadd,indexof0mulforwardadd,str);
-	
+
 	}
 	}while(indexofmul0 >= 0);
+
+
 //////////////////////////去除1*
 
 int indexof1mul;
@@ -96,7 +98,7 @@ indexof0add = str.indexOf("0+");
 String begin = str.substring(0,indexof0add);
 String end = str.substring(indexof0add+2,str.length());
 str = "" + begin + end;
-}		
+}
 }while(indexof0add >= 0);
 /////////////////////////////////////去除+0
 int indexofadd0;
@@ -109,12 +111,12 @@ indexofadd0 = str.indexOf("+0");
 String begin = str.substring(0,indexofadd0);
 String end = str.substring(indexofadd0+2,str.length());
 str = "" + begin + end;
-}		
+}
 }while(indexofadd0 >= 0);
 */
 return str;
 }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	String replaceoldchartonewchar(int index,String newchar,String oldstr)
@@ -130,7 +132,7 @@ return str;
 			return begin + newchar+ end;
 		}
 	}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	int havacharinstr(String str,char cha)
 	{
 		int num = 0;
@@ -143,7 +145,7 @@ return str;
 		}
 		return num;
 	}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	int havavary(String strin)//判断式子中是否有变量 1是有变量 0是没有变量
 	{
 		for(int i=0;i<strin.length();i++)
@@ -174,7 +176,7 @@ return str;
 			return resultofthis;
 		}
 	}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	String simplify(String duoxiangshiqian)//求值，简化
 	{
 		String ResultOfThis = null;
@@ -183,7 +185,7 @@ return str;
 		String[] resultarray = new String[20];
 		String[] zimuji = new String[20];
 		int[] huavaryhere = new int[20];
-		
+
 		if(quchujiafa.length > 0)
 		{
 			for(int i=0;i<quchujiafa.length;i++)//就剩乘法了
@@ -191,9 +193,9 @@ return str;
 				String[] quchujiacheng = null;
 				int[] quchujiachengmark = new int[20];
 				quchujiacheng = quchujiafa[i].split("\\*");//就剩字母和数字了
-				
-				
-				
+
+
+
 				for(int j=0;j<quchujiacheng.length;j++)
 				{
 					/*if(quchujiacheng[j].length()>=2)
@@ -220,7 +222,7 @@ return str;
 				}
 
 				resultarray[i] = String.valueOf(shuziji);
-				
+
 				for (int p=0;p<quchujiacheng.length;p++)
 				{
 					int m=0;
@@ -242,8 +244,8 @@ return str;
 					}
 				}  //wtf
 
-				
-				
+
+
 				/*
 				for(int f=0;f<quchujiacheng.length;f++)
 				{
@@ -252,10 +254,10 @@ return str;
 						resultarray[i] = resultarray[i] + "*" + zimuji[i];//quchujiacheng[i]有问题！！！！
 					}
 				}*/
-				
+
 			}
 		}
-		
+
 		for(int p=0;p<quchujiafa.length;p++)
 		{
 			huavaryhere[p] = havavary(resultarray[p]);
@@ -285,7 +287,7 @@ return str;
 				{
 					if (resultarray[u].compareTo("0")!=0)
 					{
-					
+
 					ResultOfThis = ResultOfThis + "+" + resultarray[u];
 					}
 				}
@@ -310,16 +312,16 @@ return str;
 						}
 					}
 				}
-			
+
 		}
 		ResultOfThis = quchu0and1(ResultOfThis);
 		return ResultOfThis;
 	}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	String derivative(char qiudaovary,String DuoXiangShi)//求导
 	{
 		String[] zhishengchengfa = DuoXiangShi.split("\\+");
-		String[] zhishengchengfachulihou = new String[20]; 
+		String[] zhishengchengfachulihou = new String[20];
 		for(int i=0;i<zhishengchengfa.length;i++)
 		{
 			int numofchar = havacharinstr(zhishengchengfa[i],qiudaovary);
@@ -346,7 +348,7 @@ return str;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public static void main(String[] args)
 	{
-		
+
 		Scanner s = new Scanner(System.in);
 		firsttouch firsttouch1 = new firsttouch();
 		String linestr=s.nextLine();
@@ -355,10 +357,10 @@ return str;
 		/////////////////////////////////////////
 		String DuoXiangShi = firsttouch1.simplify(linestr);
 		//String DuoXiangShi = Input;
-		
+
 		System.out.println(DuoXiangShi);
 		while(true)
-		{	
+		{
 			String ChuLi=s.nextLine();
 			String[] cmd=ChuLi.split(" ");
 			if (ChuLi.charAt(0)=='!')
@@ -384,7 +386,7 @@ return str;
 				{
 					System.exit(0);
 				}
-				
+
 				else if(cmd[0].compareTo("!simplify")==0)//给值替换
 				{
 					String[] chuliarray = ChuLi.split(" ");
@@ -396,12 +398,12 @@ return str;
 					System.out.println("Error");
 					System.exit(0);
 				}
-				
+
 				//System.out.println(DuoXiangShi);
 				continue;
-				
-				
-				
+
+
+
 			}
 			else
 			{
@@ -410,7 +412,7 @@ return str;
 			}
 			//DuoXiangShi = firsttouch1.simplify(ChuLi);
 			//System.out.println(DuoXiangShi);
-			
+
 		}
 	}
 }
