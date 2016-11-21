@@ -156,11 +156,11 @@ return str;
 		return 0;
 	}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	String expression(String[] chuliarray,String Poly)//处理表达式，形成自定义数据结构
+	String expression(String[] chuliarray,String DuoXiangShi)//处理表达式，形成自定义数据结构
 	{
 		if(chuliarray.length == 1)
 		{
-			return Poly;
+			return DuoXiangShi;
 		}
 		else
 		{
@@ -168,18 +168,18 @@ return str;
 			{
 				String avary = chuliarray[i].split("\\=")[0];
 				String num1 	= chuliarray[i].split("\\=")[1];
-				Poly=Poly.replaceAll(avary, num1);
+				DuoXiangShi=DuoXiangShi.replaceAll(avary, num1);
 			}
-			String resultofthis = simplify(Poly);
+			String resultofthis = simplify(DuoXiangShi);
 			return resultofthis;
 		}
 	}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
-	String simplify(String Polyqian)//求值，简化
+	String simplify(String duoxiangshiqian)//求值，简化
 	{
 		String ResultOfThis = null;
 		int haveshutimes = 0;
-		String[] quchujiafa = Polyqian.split("\\+");
+		String[] quchujiafa = duoxiangshiqian.split("\\+");
 		String[] resultarray = new String[20];
 		String[] zimuji = new String[20];
 		int[] huavaryhere = new int[20];
@@ -316,9 +316,9 @@ return str;
 		return ResultOfThis;
 	}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
-	String derivative(char qiudaovary,String Poly)//求导
+	String derivative(char qiudaovary,String DuoXiangShi)//求导
 	{
-		String[] zhishengchengfa = Poly.split("\\+");
+		String[] zhishengchengfa = DuoXiangShi.split("\\+");
 		String[] zhishengchengfachulihou = new String[20]; 
 		for(int i=0;i<zhishengchengfa.length;i++)
 		{
@@ -353,10 +353,10 @@ return str;
 		/////////////////////////////////////////
 		//System.out.println(linestr);
 		/////////////////////////////////////////
-		String Poly = firsttouch1.simplify(linestr);
-		//String Poly = Input;
+		String DuoXiangShi = firsttouch1.simplify(linestr);
+		//String DuoXiangShi = Input;
 		
-		System.out.println(Poly);
+		System.out.println(DuoXiangShi);
 		while(true)
 		{	
 			String ChuLi=s.nextLine();
@@ -366,7 +366,7 @@ return str;
 				if(ChuLi.charAt(1)=='d')//求导
 				{
 					char qiudaovary = ChuLi.charAt(4);
-					int qiudaoindex = Poly.indexOf(String.valueOf(qiudaovary));
+					int qiudaoindex = DuoXiangShi.indexOf(String.valueOf(qiudaovary));
 					if(qiudaoindex == -1)
 					{
 						System.out.println("Error,no variable");
@@ -374,10 +374,10 @@ return str;
 					}
 					else
 					{
-						String qiudaoresult= firsttouch1.derivative(qiudaovary,Poly);
+						String qiudaoresult= firsttouch1.derivative(qiudaovary,DuoXiangShi);
 						System.out.println(qiudaoresult);
-						//Poly = qiudaoresult;
-						//System.out.println(Poly);
+						//DuoXiangShi = qiudaoresult;
+						//System.out.println(DuoXiangShi);
 					}
 				}
 				else if (cmd[0].compareTo("!quit")==0)
@@ -388,16 +388,16 @@ return str;
 				else if(cmd[0].compareTo("!simplify")==0)//给值替换
 				{
 					String[] chuliarray = ChuLi.split(" ");
-					//Poly = firsttouch1.expression(chuliarray,Poly);
-					System.out.println(firsttouch1.expression(chuliarray,Poly));
+					//DuoXiangShi = firsttouch1.expression(chuliarray,DuoXiangShi);
+					System.out.println(firsttouch1.expression(chuliarray,DuoXiangShi));
 				}
 				else
 				{
-					System.out.println("Error");
+					System.out.println("Error ");
 					System.exit(0);
 				}
 				
-				//System.out.println(Poly);
+				//System.out.println(DuoXiangShi);
 				continue;
 				
 				
@@ -405,11 +405,11 @@ return str;
 			}
 			else
 			{
-				Poly = ChuLi;
+				DuoXiangShi = ChuLi;
 				System.out.println(ChuLi);
 			}
-			//Poly = firsttouch1.simplify(ChuLi);
-			//System.out.println(Poly);
+			//DuoXiangShi = firsttouch1.simplify(ChuLi);
+			//System.out.println(DuoXiangShi);
 			
 		}
 	}
